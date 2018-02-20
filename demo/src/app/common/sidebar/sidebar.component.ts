@@ -16,7 +16,7 @@ const _bs4Css =
   selector: 'sidebar',
   templateUrl: './sidebar.component.html'
 })
-export class SidebarComponent implements OnDestroy{
+export class SidebarComponent implements OnDestroy {
   isShown = false;
 
   get isBs3(): boolean {
@@ -59,7 +59,7 @@ export class SidebarComponent implements OnDestroy{
         'isOpenMenu',
         this.isShown
       );
-      if (this.isShown === false && this.document.documentElement) {
+      if (!this.isShown && this.document.documentElement) {
         this.renderer.setElementProperty(this.document.documentElement, 'scrollTop', 0);
         this.renderer.setElementProperty(this.document.body, 'scrollTop', 0);
       }

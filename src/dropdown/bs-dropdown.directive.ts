@@ -4,7 +4,7 @@ import {
   OnInit, Output, Renderer2, ViewContainerRef
 } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/filter';
+import { filter } from 'rxjs/operators/filter';
 import { ComponentLoader, ComponentLoaderFactory } from '../component-loader/index';
 
 import { BsDropdownConfig } from './bs-dropdown.config';
@@ -176,7 +176,7 @@ export class BsDropdownDirective implements OnInit, OnDestroy {
     // hide dropdown if set disabled while opened
     this._subscriptions.push(
       this._state.isDisabledChange
-        .filter((value: boolean) => value)
+        .pipe(filter((value: boolean) => value))
         .subscribe((value: boolean) => this.hide())
     );
   }
